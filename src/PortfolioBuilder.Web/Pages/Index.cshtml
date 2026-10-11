@@ -1,10 +1,416 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- HERO -->
+<section id="hero">
+  <div class="grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Open to work</div>
+        <h1 class="hero-name">Laboni<br><span class="accent">Rahman</span></h1>
+        <p class="hero-title">CS Graduate · Aspiring Full-Stack Developer | AI/ML Enthusiast</p>
+        <p class="hero-desc">Computer Science student passionate about software development, with a strong foundation in C/C++, Java, and Python. Experienced in FastAPI, REST API development, Linux, and competitive programming with 100+ Codeforces problems solved.</p>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">100+</div>
+            <div class="stat-label">CF Problems</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3.41</div>
+            <div class="stat-label">GPA / 4.0</div>
+          </div>
+        </div>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> Contact Me</a>
+          <a href="~/files/CV.pdf" download="CV.pdf" class="btn btn-outline"><i class="fas fa-download"></i> Download CV</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://www.linkedin.com/in/laboni-rahman-ab5277316/" target="_blank" class="social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/Laboni108" target="_blank" class="social-link" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:laboni.rahman.a3@gmail.com" class="social-link" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-gif-group">
+          <img src="~/images/pc.gif" alt="Computer" class="hero-gif">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img-frame">
+          <img src="~/images/laboni.jpeg" alt="About Laboni Rahman">
+        </div>
+        <div class="about-tag">Class of 2026</div>
+      </div>
+      <div class="about-content reveal">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Turning ideas into<br>real-world software</h2>
+
+        <p>I'm a Computer Science and Engineering student at KUET passionate
+          about building scalable software and intelligent applications.</p>
+        <p>My experience includes backend development, full-stack web applications,
+          mobile development, machine learning, computer vision, and NLP.</p>
+        <p>Beyond academics, I enjoy problem solving, developing impactful projects,
+          and exploring emerging technologies through research and continuous learning.</p>
+        <div class="about-chips">
+          <span class="chip">Backend Development</span>
+          <span class="chip">Full-Stack Web Development</span>
+          <span class="chip">Problem Solving</span>
+          <span class="chip">Research</span>
+          <span class="chip">Open Source</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Education</div>
+      <h2 class="section-title">Academic Journey</h2>
+    </div>
+    <div class="reveal" style="margin-top: 2.5rem;">
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Science in Computer Science &amp; Engineering</div>
+        <div class="edu-institution">Khulna University of Engineering &amp; Technology (KUET)</div>
+        <div class="edu-meta">
+          <span><i class="fas fa-calendar-alt"></i> Graduation Year: 2026</span>
+          <span><i class="fas fa-map-marker-alt"></i> Khulna, Bangladesh</span>
+        </div>
+        <div class="edu-gpa"><i class="fas fa-star"></i> GPA: 3.41 / 4.00</div>
+        <div class="coursework">
+          <span class="cw-tag">Data Structures &amp; Algorithms</span>
+          <span class="cw-tag">Operating Systems</span>
+          <span class="cw-tag">Object Oriented Programming</span>
+          <span class="cw-tag">Computer Networks</span>
+          <span class="cw-tag">Database Systems</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">Technical Toolkit</h2>
+    </div>
+    <div class="skills-grid" style="margin-top: 2.5rem;">
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <div class="skill-card-title">Languages</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
+          <div class="skill-card-title">Frameworks</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Laravel</span>
+          <span class="skill-tag">ASP.NET</span>
+          <span class="skill-tag">Flutter</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon"><i class="fab fa-docker"></i></div>
+          <div class="skill-card-title">Development Tools</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Linux/Ubuntu</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">OMNeT++</span>
+          <span class="skill-tag">Android Studio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS (static for now; replaced by database-driven cards in a later step) -->
+<section id="projects">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">Things I've Built</h2>
+    </div>
+
+    <div class="projects-grid" style="margin-top: 2.5rem;">
+
+      <div class="project-card reveal">
+        <div class="project-num">01</div>
+        <div class="project-title">HemoCam</div>
+        <p class="project-desc">
+          Research-based mobile application for non-invasive hemoglobin estimation using skin and nail image analysis with machine learning and computer vision.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">Java</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Scikit-learn</span>
+          <span class="tech-tag">ElasticNet</span>
+        </div>
+        <a href="https://github.com/Laboni108/Hemocam_web_APP" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">02</div>
+        <div class="project-title">Voice Navigator</div>
+        <p class="project-desc">
+          Accessibility-focused web navigation system that enables hands-free browser control using multilingual voice commands and real-time speech recognition.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Web Speech API</span>
+        </div>
+        <a href="https://github.com/Laboni108/Digital_Access_Bangla_Web_Brrowser" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">03</div>
+        <div class="project-title">Human &amp; Car Detection</div>
+        <p class="project-desc">
+          Computer vision system using YOLOv8 to detect and count humans and vehicles from drone imagery with real-time visualization and OpenCV.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">YOLOv8</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">Kaggle</span>
+        </div>
+        <a href="#" class="project-link">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">04</div>
+        <div class="project-title">Portfolio Website</div>
+        <p class="project-desc">
+          Responsive full-stack portfolio website with a secure admin dashboard, SQL Server integration, CRUD functionality, and authentication.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">C#</span>
+          <span class="tech-tag">SQL Server</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">CSS</span>
+        </div>
+        <a href="#" class="project-link">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- COMPETITIVE PROGRAMMING -->
+<section id="competitive">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Competitive Programming</div>
+      <h2 class="section-title">Problem Solving</h2>
+    </div>
+
+    <div class="cp-grid" style="margin-top: 2.5rem;">
+
+      <div class="cp-card reveal">
+        <div class="cp-icon">⚡</div>
+        <div class="cp-title">100+ Problems Solved on Codeforces</div>
+      </div>
+
+      <div class="cp-card reveal">
+        <div class="cp-icon">💻</div>
+        <div class="cp-title">LeetCode (Easy &amp; Medium Problems)</div>
+      </div>
+
+      <div class="cp-card reveal">
+        <div class="cp-icon">🏆</div>
+        <div class="cp-title">23rd Place — Inter KUET Programming Contest (IKPC) 2022</div>
+      </div>
+
+      <div class="cp-card reveal">
+        <div class="cp-icon">🧠</div>
+        <div class="cp-title">Strong Foundation in Data Structures &amp; Algorithms</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Research</div>
+      <h2 class="section-title">Research Interests</h2>
+    </div>
+
+    <div class="research-list" style="margin-top: 2.5rem;">
+
+      <div class="research-card reveal">
+        <div class="research-title">
+          Natural Language Processing (NLP) &amp; Large Language Models (LLMs)
+        </div>
+        <div style="margin-top:0.75rem;">
+          <span class="research-venue">
+            <i class="fas fa-brain"></i>
+            Text Processing • Machine Translation • Sentiment Analysis • BERT • GPT
+          </span>
+        </div>
+      </div>
+
+      <div class="research-card reveal">
+        <div class="research-title">
+          Machine Learning &amp; Computer Vision
+        </div>
+        <div style="margin-top:0.75rem;">
+          <span class="research-venue">
+            <i class="fas fa-robot"></i>
+            Supervised Learning • Deep Learning • Computer Vision • Model Evaluation
+          </span>
+        </div>
+      </div>
+
+      <div class="research-card reveal">
+        <div class="research-title">
+          Full-Stack Web Development
+        </div>
+        <div style="margin-top:0.75rem;">
+          <span class="research-venue">
+            <i class="fas fa-code"></i>
+            React • Node.js • REST APIs • Database Integration • Scalable Applications
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT (still posts to Formspree; replaced by our own database form in a later step) -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Get In Touch</h2>
+    </div>
+    <div class="contact-grid" style="margin-top: 2.5rem;">
+      <div class="contact-info reveal">
+        <a href="tel:+8801749493715" class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-value">+880-1749493715</div>
+          </div>
+        </a>
+        <a href="mailto:laboni.rahman.a3@gmail.com" class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">laboni.rahman.a3@gmail.com</div>
+          </div>
+        </a>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-value">Barishal, Bangladesh</div>
+          </div>
+        </div>
+        <a href="https://www.linkedin.com/in/laboni-rahman-ab5277316/" target="_blank" class="contact-item">
+          <div class="contact-item-icon"><i class="fab fa-linkedin-in"></i></div>
+          <div>
+            <div class="contact-item-label">LinkedIn</div>
+            <div class="contact-item-value">laboni-rahman-ab5277316</div>
+          </div>
+        </a>
+        <a href="https://github.com/Laboni108" target="_blank" class="contact-item">
+          <div class="contact-item-icon"><i class="fab fa-github"></i></div>
+          <div>
+            <div class="contact-item-label">GitHub</div>
+            <div class="contact-item-value">Laboni108</div>
+          </div>
+        </a>
+      </div>
+
+      <form class="contact-form reveal" action="https://formspree.io/f/meewjnzv" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Laboni Rahman" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input type="text" name="subject" class="form-control" placeholder="What's this about?">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea name="message" class="form-control" rows="6" placeholder="Your message..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
