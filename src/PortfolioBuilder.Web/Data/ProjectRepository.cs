@@ -31,4 +31,23 @@ public class ProjectRepository
         using var connection = _factory.CreateConnection();
         return await connection.QuerySingleOrDefaultAsync<Project>(sql, new { Id = id });
     }
+
+        public async Task<int> AddAsync(Project project)
+    {
+        const string sql = @"INSERT INTO dbo.Projects (Title, Description, TechStack, GithubUrl)
+                             OUTPUT INSERTED.Id
+                             VALUES (@Title, @Description, @TechStack, @GithubUrl)";
+
+        using var connection = _factory.CreateConnection();
+        return await connection.ExecuteScalarAsync<int>(sql, project);
+    }
+
+    public async Task<bool> DeleteAsync(int id)
+    {
+        const string sql = "DELETE FROM dbo.Projects WHERE Id = @Id";
+
+        using var connection = _factory.CreateConnection();
+        int rowsAffected = await connection.ExecuteAsync(sql, new { Id = id });
+        return rowsAffected > 0;
+    }
 }
