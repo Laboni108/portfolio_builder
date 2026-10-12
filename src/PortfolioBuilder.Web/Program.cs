@@ -6,6 +6,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton<DbConnectionFactory>();
 builder.Services.AddScoped<ProjectRepository>();
 builder.Services.AddScoped<ContactMessageRepository>();
+builder.Services.AddScoped<AdminUserRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
