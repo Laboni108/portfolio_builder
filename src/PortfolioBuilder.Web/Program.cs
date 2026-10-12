@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<DbConnectionFactory>();
 builder.Services.AddScoped<ProjectRepository>();
+builder.Services.AddScoped<ContactMessageRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
