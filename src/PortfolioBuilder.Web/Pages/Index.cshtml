@@ -181,74 +181,32 @@
 
     <div class="projects-grid" style="margin-top: 2.5rem;">
 
-      <div class="project-card reveal">
-        <div class="project-num">01</div>
-        <div class="project-title">HemoCam</div>
-        <p class="project-desc">
-          Research-based mobile application for non-invasive hemoglobin estimation using skin and nail image analysis with machine learning and computer vision.
-        </p>
-        <div class="project-tech">
-          <span class="tech-tag">Java</span>
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Scikit-learn</span>
-          <span class="tech-tag">ElasticNet</span>
-        </div>
-        <a href="https://github.com/Laboni108/Hemocam_web_APP" target="_blank" class="project-link">
-          <i class="fab fa-github"></i> View on GitHub
-        </a>
-      </div>
+           @if (Model.Projects.Count == 0)
+      {
+        <p>No projects yet. Check back soon!</p>
+      }
 
-      <div class="project-card reveal">
-        <div class="project-num">02</div>
-        <div class="project-title">Voice Navigator</div>
-        <p class="project-desc">
-          Accessibility-focused web navigation system that enables hands-free browser control using multilingual voice commands and real-time speech recognition.
-        </p>
-        <div class="project-tech">
-          <span class="tech-tag">JavaScript</span>
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Web Speech API</span>
+      @for (int i = 0; i < Model.Projects.Count; i++)
+      {
+        var project = Model.Projects[i];
+        <div class="project-card reveal">
+          <div class="project-num">@((i + 1).ToString("00"))</div>
+          <div class="project-title">@project.Title</div>
+          <p class="project-desc">@project.Description</p>
+          <div class="project-tech">
+            @foreach (var tech in project.TechStack.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+            {
+              <span class="tech-tag">@tech</span>
+            }
+          </div>
+          @if (!string.IsNullOrWhiteSpace(project.GithubUrl))
+          {
+            <a href="@project.GithubUrl" target="_blank" rel="noopener" class="project-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          }
         </div>
-        <a href="https://github.com/Laboni108/Digital_Access_Bangla_Web_Brrowser" target="_blank" class="project-link">
-          <i class="fab fa-github"></i> View on GitHub
-        </a>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-num">03</div>
-        <div class="project-title">Human &amp; Car Detection</div>
-        <p class="project-desc">
-          Computer vision system using YOLOv8 to detect and count humans and vehicles from drone imagery with real-time visualization and OpenCV.
-        </p>
-        <div class="project-tech">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">YOLOv8</span>
-          <span class="tech-tag">OpenCV</span>
-          <span class="tech-tag">Kaggle</span>
-        </div>
-        <a href="#" class="project-link">
-          <i class="fab fa-github"></i> View on GitHub
-        </a>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-num">04</div>
-        <div class="project-title">Portfolio Website</div>
-        <p class="project-desc">
-          Responsive full-stack portfolio website with a secure admin dashboard, SQL Server integration, CRUD functionality, and authentication.
-        </p>
-        <div class="project-tech">
-          <span class="tech-tag">C#</span>
-          <span class="tech-tag">SQL Server</span>
-          <span class="tech-tag">JavaScript</span>
-          <span class="tech-tag">CSS</span>
-        </div>
-        <a href="#" class="project-link">
-          <i class="fab fa-github"></i> View on GitHub
-        </a>
-      </div>
-
-    </div>
+      }
   </div>
 </section>
 
