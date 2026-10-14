@@ -1173,3 +1173,7 @@ footer {
   font-size: 0.95rem;
   cursor: pointer;
 }
+.admin-page {
+  min-height: 100vh;
+  padding: 9rem 0 4rem;
+}
