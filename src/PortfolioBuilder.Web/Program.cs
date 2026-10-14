@@ -1,4 +1,5 @@
 using PortfolioBuilder.Web.Data;
+using PortfolioBuilder.Web.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +16,7 @@ builder.Services.AddSingleton<DbConnectionFactory>();
 builder.Services.AddScoped<ProjectRepository>();
 builder.Services.AddScoped<ContactMessageRepository>();
 builder.Services.AddScoped<AdminUserRepository>();
+builder.Services.AddScoped<AdminAuthService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
