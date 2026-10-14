@@ -1177,3 +1177,8 @@ footer {
   min-height: 100vh;
   padding: 9rem 0 4rem;
 }
+.nav-links a.nav-admin {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+}
