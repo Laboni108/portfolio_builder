@@ -1,1 +1,5 @@
 dotnet new gitignore
+# Build output
+[Bb]in/
+[Oo]bj/
+.vs/
