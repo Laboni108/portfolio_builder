@@ -35,6 +35,13 @@
         <button type="submit" class="btn btn-primary">
           <i class="fas fa-lock"></i> Sign in
         </button>
+
+                @if (Model.CanCreateAdmin)
+        {
+          <p class="login-hint">
+            No admin exists yet. <a href="/Setup">Create the first admin account</a>
+          </p>
+        }
       </form>
     </div>
   </div>

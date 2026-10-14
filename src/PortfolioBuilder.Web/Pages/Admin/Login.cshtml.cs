@@ -24,6 +24,7 @@ public class LoginModel : PageModel
 
     [BindProperty(SupportsGet = true)]
     public string? ReturnUrl { get; set; }
+    public bool CanCreateAdmin { get; private set; }
 
     public async Task<IActionResult> OnGetAsync()
     {
@@ -54,6 +55,11 @@ public class LoginModel : PageModel
     private string SafeReturnUrl() =>
         !string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl) ? ReturnUrl : "/Admin";
 
+    private async Task<IActionResult> ShowPageAsync()
+    {
+        CanCreateAdmin = await _admins.CountAsync() == 0;
+        return Page();
+    }
     public class LoginInput
     {
         [Required(ErrorMessage = "Please enter your username.")]
