@@ -64,7 +64,6 @@ C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net
 C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\PortfolioBuilder.Web.pdb
 C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\PortfolioBuilder.Web.genruntimeconfig.cache
 C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\ref\PortfolioBuilder.Web.dll
-C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\compressed\54lk9eyec7-{0}-bgs7t6n5pg-bgs7t6n5pg.gz
 C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\compressed\j4eq8m7e1w-{0}-t1cqhe9u97-t1cqhe9u97.gz
 C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\compressed\k12ynx6byk-{0}-sejl45xvog-sejl45xvog.gz
 C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\compressed\9scuia2dbb-{0}-xvp3kq03qx-xvp3kq03qx.gz
@@ -131,3 +130,4 @@ C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\bin\Debug\net
 C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\PortfolioBuilder.Web.csproj.AssemblyReference.cache
 C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\Portfoli.1DA47C54.Up2Date
+C:\Users\Laboni\Desktop\portfolio-builder\src\PortfolioBuilder.Web\obj\Debug\net10.0\compressed\54lk9eyec7-{0}-s2bspeqrsd-s2bspeqrsd.gz

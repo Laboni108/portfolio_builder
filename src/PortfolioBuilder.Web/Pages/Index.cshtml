@@ -346,24 +346,32 @@
         </a>
       </div>
 
-      <form class="contact-form reveal" action="https://formspree.io/f/meewjnzv" method="POST">
+           <form class="contact-form reveal" method="post" asp-page-handler="Contact" asp-fragment="contact">
+        @if (!string.IsNullOrEmpty(Model.ContactSuccess))
+        {
+          <div class="form-success">@Model.ContactSuccess</div>
+        }
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" placeholder="Laboni Rahman" required>
+            <input asp-for="Contact.Name" class="form-control" placeholder="Your name" />
+            <span asp-validation-for="Contact.Name" class="field-error"></span>
           </div>
           <div class="form-group">
             <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
+            <input asp-for="Contact.Email" class="form-control" placeholder="you@example.com" />
+            <span asp-validation-for="Contact.Email" class="field-error"></span>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Subject</label>
-          <input type="text" name="subject" class="form-control" placeholder="What's this about?">
+          <input asp-for="Contact.Subject" class="form-control" placeholder="What's this about?" />
+          <span asp-validation-for="Contact.Subject" class="field-error"></span>
         </div>
         <div class="form-group">
           <label class="form-label">Message</label>
-          <textarea name="message" class="form-control" rows="6" placeholder="Your message..." required></textarea>
+          <textarea asp-for="Contact.Message" class="form-control" rows="6" placeholder="Your message..."></textarea>
+          <span asp-validation-for="Contact.Message" class="field-error"></span>
         </div>
         <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
           <i class="fas fa-paper-plane"></i> Send Message
