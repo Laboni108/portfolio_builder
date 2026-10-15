@@ -39,4 +39,37 @@ public class AdminUserRepository
         using var connection = _factory.CreateConnection();
         return await connection.ExecuteScalarAsync<int>(sql, user);
     }
+
+        public async Task SetRememberTokenAsync(int id, string tokenHash, DateTime expiresAtUtc)
+    {
+        const string sql = @"UPDATE dbo.AdminUsers
+                             SET RememberTokenHash = @TokenHash,
+                                 RememberTokenExpiresAt = @ExpiresAt
+                             WHERE Id = @Id";
+
+        using var connection = _factory.CreateConnection();
+        await connection.ExecuteAsync(sql, new { Id = id, TokenHash = tokenHash, ExpiresAt = expiresAtUtc });
+    }
+
+    public async Task<AdminUser?> GetByRememberTokenHashAsync(string tokenHash)
+    {
+        const string sql = @"SELECT Id, Username, PasswordHash, CreatedAt
+                             FROM dbo.AdminUsers
+                             WHERE RememberTokenHash = @TokenHash
+                               AND RememberTokenExpiresAt > SYSUTCDATETIME()";
+
+        using var connection = _factory.CreateConnection();
+        return await connection.QuerySingleOrDefaultAsync<AdminUser>(sql, new { TokenHash = tokenHash });
+    }
+
+    public async Task ClearRememberTokenAsync(int id)
+    {
+        const string sql = @"UPDATE dbo.AdminUsers
+                             SET RememberTokenHash = NULL,
+                                 RememberTokenExpiresAt = NULL
+                             WHERE Id = @Id";
+
+        using var connection = _factory.CreateConnection();
+        await connection.ExecuteAsync(sql, new { Id = id });
+    }
 }
