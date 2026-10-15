@@ -1,0 +1,67 @@
+@page
+@model PortfolioBuilder.Web.Pages.Admin.Projects.IndexModel
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<section class="admin-page">
+  <div class="container">
+    <div class="section-label">Admin</div>
+    <h1 class="section-title">Projects</h1>
+        <a href="/Admin/Projects/Create" class="btn btn-primary" style="margin-top: 1rem;">
+      <i class="fas fa-plus"></i> Add project
+    </a>
+
+    @if (!string.IsNullOrEmpty(Model.StatusMessage))
+    {
+      <div class="form-success">@Model.StatusMessage</div>
+    }
+
+    @if (Model.Items.Count == 0)
+    {
+      <p>No projects yet.</p>
+    }
+    else
+    {
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Tech stack</th>
+              <th>GitHub</th>
+              <th>Added</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (var project in Model.Items)
+            {
+              <tr>
+                <td>@project.Title</td>
+                <td>@project.TechStack</td>
+                <td>
+                  @if (!string.IsNullOrWhiteSpace(project.GithubUrl))
+                  {
+                    <a href="@project.GithubUrl" target="_blank" rel="noopener">Link</a>
+                  }
+                  else
+                  {
+                    <span>-</span>
+                  }
+                </td>
+                <td>@project.CreatedAt.ToString("yyyy-MM-dd")</td>
+                <td>
+                  <form method="post" asp-page-handler="Delete" asp-route-id="@project.Id"
+                        onsubmit="return confirm('Delete this project?');">
+                    <button type="submit" class="admin-delete">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div>
+</section>

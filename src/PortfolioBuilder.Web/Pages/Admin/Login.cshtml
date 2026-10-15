@@ -1,6 +1,7 @@
 @page
 @model PortfolioBuilder.Web.Pages.Admin.LoginModel
 @{
+    Layout = "/Pages/Shared/_Layout.cshtml";
     ViewData["Title"] = "Admin Login";
 }
 
@@ -36,7 +37,7 @@
           <i class="fas fa-lock"></i> Sign in
         </button>
 
-                @if (Model.CanCreateAdmin)
+        @if (Model.CanCreateAdmin)
         {
           <p class="login-hint">
             No admin exists yet. <a href="/Setup">Create the first admin account</a>
