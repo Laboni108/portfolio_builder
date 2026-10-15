@@ -1186,3 +1186,33 @@ footer {
   font-size: 0.95rem;
   opacity: 0.85;
 }
+.admin-subnav {
+  padding-top: 6.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-subnav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.9rem;
+}
+
+.admin-subnav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.admin-subnav-links a {
+  font-weight: 500;
+}
+
+.admin-logout {
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: inherit;
+  padding: 0.35rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
