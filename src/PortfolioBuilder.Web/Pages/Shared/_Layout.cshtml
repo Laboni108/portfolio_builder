@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    bool isAdminArea = Context.Request.Path.StartsWithSegments("/Admin");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -15,33 +18,39 @@
 <body>
 
     <!-- NAVIGATION -->
-    <nav id="navbar">
-        <div class="nav-inner">
-            <a href="/#hero" class="nav-logo">LR<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="/#about">About</a></li>
-                <li><a href="/#education">Education</a></li>
-                <li><a href="/#skills">Skills</a></li>
-                <li><a href="/#projects">Projects</a></li>
-                <li><a href="/#competitive">Coding</a></li>
-                <li><a href="/#contact">Contact</a></li>
-                <li><a href="/Admin" class="nav-admin">Admin</a></li>
+                <ul class="nav-links">
+                @if (isAdminArea)
+                {
+                    <li><a href="/">View site</a></li>
+                }
+                else
+                {
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#education">Education</a></li>
+                    <li><a href="/#skills">Skills</a></li>
+                    <li><a href="/#projects">Projects</a></li>
+                    <li><a href="/#competitive">Coding</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="/Admin" class="nav-admin">Admin</a></li>
+                }
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </nav>
 
     <!-- MOBILE NAV -->
-    <div class="nav-mobile" id="navMobile">
-        <a href="/#about">About</a>
-        <a href="/#education">Education</a>
-        <a href="/#skills">Skills</a>
-        <a href="/#projects">Projects</a>
-        <a href="/#competitive">Coding Skills</a>
-        <a href="/#contact">Contact</a>
-        <a href="/Admin">Admin</a>
+        <div class="nav-mobile" id="navMobile">
+        @if (isAdminArea)
+        {
+            <a href="/">View site</a>
+        }
+        else
+        {
+            <a href="/#about">About</a>
+            <a href="/#education">Education</a>
+            <a href="/#skills">Skills</a>
+            <a href="/#projects">Projects</a>
+            <a href="/#competitive">Coding Skills</a>
+            <a href="/#contact">Contact</a>
+            <a href="/Admin">Admin</a>
+        }
     </div>
 
     @RenderBody()
