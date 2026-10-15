@@ -1216,3 +1216,38 @@ footer {
   font: inherit;
   cursor: pointer;
 }
+.admin-table-wrap {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: top;
+}
+
+.admin-table th {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.admin-delete {
+  background: none;
+  border: 1px solid #ff6b6b;
+  border-radius: 999px;
+  color: #ff6b6b;
+  padding: 0.3rem 0.9rem;
+  font: inherit;
+  cursor: pointer;
+}
