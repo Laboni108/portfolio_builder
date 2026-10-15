@@ -1251,3 +1251,17 @@ footer {
   font: inherit;
   cursor: pointer;
 }
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 640px;
+  margin-top: 1.5rem;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
