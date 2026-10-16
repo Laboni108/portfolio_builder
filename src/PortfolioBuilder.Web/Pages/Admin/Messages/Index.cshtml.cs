@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PortfolioBuilder.Web.Data;
 using PortfolioBuilder.Web.Models;
@@ -17,9 +18,19 @@ public class IndexModel : PageModel
 
     public int UnreadCount { get; private set; }
 
+    [TempData]
+    public string? StatusMessage { get; set; }
+
     public async Task OnGetAsync()
     {
         Items = (await _messages.GetAllAsync()).ToList();
         UnreadCount = Items.Count(m => !m.IsRead);
+    }
+
+    public async Task<IActionResult> OnPostDeleteAsync(int id)
+    {
+        bool deleted = await _messages.DeleteAsync(id);
+        StatusMessage = deleted ? "Message deleted." : "That message no longer exists.";
+        return RedirectToPage();
     }
 }

@@ -10,6 +10,11 @@
     <h1 class="section-title">Messages</h1>
     <p>@Model.UnreadCount unread of @Model.Items.Count total.</p>
 
+        @if (!string.IsNullOrEmpty(Model.StatusMessage))
+    {
+      <div class="form-success">@Model.StatusMessage</div>
+    }
+
     @if (Model.Items.Count == 0)
     {
       <p>No messages yet.</p>
@@ -47,8 +52,12 @@
                 </td>
                 <td>@(string.IsNullOrWhiteSpace(message.Subject) ? "(no subject)" : message.Subject)</td>
                 <td>@message.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
-                <td>
+                                <td class="admin-actions">
                   <a href="/Admin/Messages/Details?id=@message.Id">Open</a>
+                  <form method="post" asp-page-handler="Delete" asp-route-id="@message.Id"
+                        onsubmit="return confirm('Delete this message?');">
+                    <button type="submit" class="admin-delete">Delete</button>
+                  </form>
                 </td>
               </tr>
             }
