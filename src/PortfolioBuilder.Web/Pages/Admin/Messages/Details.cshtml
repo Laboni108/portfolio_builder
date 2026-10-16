@@ -1,0 +1,24 @@
+@page
+@model PortfolioBuilder.Web.Pages.Admin.Messages.DetailsModel
+@{
+    ViewData["Title"] = "Message";
+}
+
+<section class="admin-page">
+  <div class="container">
+    <div class="section-label">Admin</div>
+    <h1 class="section-title">@(string.IsNullOrWhiteSpace(Model.Item!.Subject) ? "(no subject)" : Model.Item.Subject)</h1>
+
+    <div class="message-meta">
+      <div><strong>From:</strong> @Model.Item.Name</div>
+      <div><strong>Email:</strong> <a href="mailto:@Model.Item.Email">@Model.Item.Email</a></div>
+      <div><strong>Received:</strong> @Model.Item.CreatedAt.ToString("yyyy-MM-dd HH:mm") UTC</div>
+    </div>
+
+    <div class="message-body">@Model.Item.Message</div>
+
+    <div class="admin-form-actions">
+      <a href="/Admin/Messages" class="btn btn-outline">Back to messages</a>
+    </div>
+  </div>
+</section>

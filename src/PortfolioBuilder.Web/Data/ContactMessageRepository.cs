@@ -57,4 +57,14 @@ public class ContactMessageRepository
         int rowsAffected = await connection.ExecuteAsync(sql, new { Id = id });
         return rowsAffected > 0;
     }
+
+        public async Task<ContactMessage?> GetByIdAsync(int id)
+    {
+        const string sql = @"SELECT Id, Name, Email, Subject, Message, IsRead, CreatedAt
+                             FROM dbo.ContactMessages
+                             WHERE Id = @Id";
+
+        using var connection = _factory.CreateConnection();
+        return await connection.QuerySingleOrDefaultAsync<ContactMessage>(sql, new { Id = id });
+    }
 }
