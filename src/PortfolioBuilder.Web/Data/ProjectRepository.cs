@@ -32,6 +32,14 @@ public class ProjectRepository
         return await connection.QuerySingleOrDefaultAsync<Project>(sql, new { Id = id });
     }
 
+        public async Task<int> CountAsync()
+    {
+        const string sql = "SELECT COUNT(*) FROM dbo.Projects";
+
+        using var connection = _factory.CreateConnection();
+        return await connection.ExecuteScalarAsync<int>(sql);
+    }
+
         public async Task<int> AddAsync(Project project)
     {
         const string sql = @"INSERT INTO dbo.Projects (Title, Description, TechStack, GithubUrl)

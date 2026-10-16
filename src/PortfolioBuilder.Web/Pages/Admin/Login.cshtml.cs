@@ -24,6 +24,7 @@ public class LoginModel : PageModel
 
     [BindProperty(SupportsGet = true)]
     public string? ReturnUrl { get; set; }
+
     public bool CanCreateAdmin { get; private set; }
 
     public async Task<IActionResult> OnGetAsync()
@@ -31,13 +32,13 @@ public class LoginModel : PageModel
         if (await _auth.TryRestoreFromCookieAsync(HttpContext))
             return LocalRedirect(SafeReturnUrl());
 
-        return Page();
+        return await ShowPageAsync();
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
         if (!ModelState.IsValid)
-            return Page();
+            return await ShowPageAsync();
 
         var user = await _admins.GetByUsernameAsync(Input.Username.Trim());
         bool passwordOk = PasswordHasher.Verify(Input.Password, user?.PasswordHash ?? DummyHash);
@@ -45,21 +46,22 @@ public class LoginModel : PageModel
         if (user == null || !passwordOk)
         {
             ModelState.AddModelError(string.Empty, "Invalid username or password.");
-            return Page();
+            return await ShowPageAsync();
         }
 
         await _auth.SignInAsync(HttpContext, user, Input.RememberMe);
         return LocalRedirect(SafeReturnUrl());
     }
 
-    private string SafeReturnUrl() =>
-        !string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl) ? ReturnUrl : "/Admin";
-
     private async Task<IActionResult> ShowPageAsync()
     {
         CanCreateAdmin = await _admins.CountAsync() == 0;
         return Page();
     }
+
+    private string SafeReturnUrl() =>
+        !string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl) ? ReturnUrl : "/Admin";
+
     public class LoginInput
     {
         [Required(ErrorMessage = "Please enter your username.")]
