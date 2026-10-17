@@ -1,24 +1,49 @@
 @page
-@model PortfolioBuilder.Web.Pages.Admin.IndexModel
+@model PortfolioBuilder.Web.Pages.Admin.LoginModel
 @{
-    ViewData["Title"] = "Dashboard";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Admin Login";
 }
 
-<section class="admin-page">
+<section class="admin-login">
   <div class="container">
-    <div class="section-label">Admin</div>
-    <h1 class="section-title">Dashboard</h1>
-    <p>Signed in as <strong>@Model.Username</strong>.</p>
+    <div class="login-card">
+      <div class="section-label">Admin</div>
+      <h1 class="section-title">Sign in</h1>
 
-    <div class="dashboard-cards">
-      <a href="/Admin/Projects" class="stat-card">
-        <div class="stat-card-num">@Model.ProjectCount</div>
-        <div class="stat-card-label">Projects</div>
-      </a>
-      <a href="/Admin/Messages" class="stat-card">
-        <div class="stat-card-num">@Model.UnreadCount</div>
-        <div class="stat-card-label">Unread messages</div>
-      </a>
+      <form method="post">
+        <input type="hidden" asp-for="ReturnUrl" />
+
+        <div asp-validation-summary="ModelOnly" class="field-error"></div>
+
+        <div class="form-group">
+          <label class="form-label" asp-for="Input.Username">Username</label>
+          <input asp-for="Input.Username" class="form-control" autocomplete="username" />
+          <span asp-validation-for="Input.Username" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" asp-for="Input.Password">Password</label>
+          <input asp-for="Input.Password" type="password" class="form-control" autocomplete="current-password" />
+          <span asp-validation-for="Input.Password" class="field-error"></span>
+        </div>
+
+        <label class="remember-row">
+          <input asp-for="Input.RememberMe" type="checkbox" />
+          Remember me for 30 days
+        </label>
+
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-lock"></i> Sign in
+        </button>
+
+        @if (Model.CanCreateAdmin)
+        {
+          <p class="login-hint">
+            No admin exists yet. <a href="/Setup">Create the first admin account</a>
+          </p>
+        }
+      </form>
     </div>
   </div>
 </section>
