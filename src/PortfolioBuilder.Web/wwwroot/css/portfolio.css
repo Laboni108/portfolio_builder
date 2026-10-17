@@ -1353,3 +1353,11 @@ footer {
   margin-top: 0.3rem;
   opacity: 0.75;
 }
+.footer-admin {
+  font-size: 0.85rem;
+  opacity: 0.55;
+}
+
+.footer-admin:hover {
+  opacity: 1;
+}
