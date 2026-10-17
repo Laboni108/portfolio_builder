@@ -32,6 +32,6 @@ public class IndexModel : PageModel
     public async Task<IActionResult> OnPostLogoutAsync()
     {
         await _auth.SignOutAsync(HttpContext);
-        return Redirect("/Admin/Login");
+         return Redirect("/Admin/Login");
     }
 }
