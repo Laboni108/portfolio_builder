@@ -50,6 +50,20 @@ public class ProjectRepository
         return await connection.ExecuteScalarAsync<int>(sql, project);
     }
 
+        public async Task<bool> UpdateAsync(Project project)
+    {
+        const string sql = @"UPDATE dbo.Projects
+                             SET Title = @Title,
+                                 Description = @Description,
+                                 TechStack = @TechStack,
+                                 GithubUrl = @GithubUrl
+                             WHERE Id = @Id";
+
+        using var connection = _factory.CreateConnection();
+        int rowsAffected = await connection.ExecuteAsync(sql, project);
+        return rowsAffected > 0;
+    }
+
     public async Task<bool> DeleteAsync(int id)
     {
         const string sql = "DELETE FROM dbo.Projects WHERE Id = @Id";
