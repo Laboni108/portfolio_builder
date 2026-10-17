@@ -1,0 +1,29 @@
+@using PortfolioBuilder.Web.Data
+@inject ContactMessageRepository MessageRepository
+@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
+    int unreadCount = await MessageRepository.CountUnreadAsync();
+}
+
+<div class="admin-subnav">
+  <div class="container admin-subnav-inner">
+    <div class="admin-subnav-links">
+      <a href="/Admin">Dashboard</a>
+      <a href="/Admin/Projects">Projects</a>
+      <a href="/Admin/Messages">
+        Messages
+        @if (unreadCount > 0)
+        {
+          <span class="nav-count">@unreadCount</span>
+        }
+      </a>
+    </div>
+    <form method="post" asp-page="/Admin/Index" asp-page-handler="Logout">
+      <button type="submit" class="admin-logout">
+        <i class="fas fa-right-from-bracket"></i> Log out
+      </button>
+    </form>
+  </div>
+</div>
+
+@RenderBody()

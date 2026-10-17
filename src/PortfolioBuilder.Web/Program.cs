@@ -1,8 +1,26 @@
+using PortfolioBuilder.Web.Data;
+using PortfolioBuilder.Web.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AddFolderApplicationModelConvention("/Admin",
+        model => model.Filters.Add(new AdminAuthorizeFilter()));
+});
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.Name = ".Portfolio.Session";
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+builder.Services.AddSingleton<DbConnectionFactory>();
+builder.Services.AddScoped<ProjectRepository>();
+builder.Services.AddScoped<ContactMessageRepository>();
+builder.Services.AddScoped<AdminUserRepository>();
+builder.Services.AddScoped<AdminAuthService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -16,6 +34,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 

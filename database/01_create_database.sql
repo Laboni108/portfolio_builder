@@ -1,0 +1,5 @@
+IF DB_ID('PortfolioDb') IS NULL
+BEGIN
+    CREATE DATABASE PortfolioDb;
+END
+GO
