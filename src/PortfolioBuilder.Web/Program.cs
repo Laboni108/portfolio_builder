@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.DataProtection;
 using PortfolioBuilder.Web.Data;
 using PortfolioBuilder.Web.Services;
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,13 @@ builder.Services.AddScoped<ProjectRepository>();
 builder.Services.AddScoped<ContactMessageRepository>();
 builder.Services.AddScoped<AdminUserRepository>();
 builder.Services.AddScoped<AdminAuthService>();
+var keysPath = builder.Configuration["DataProtection:KeysPath"];
+if (!string.IsNullOrWhiteSpace(keysPath))
+{
+    builder.Services.AddDataProtection()
+        .PersistKeysToFileSystem(new DirectoryInfo(keysPath))
+        .SetApplicationName("PortfolioBuilder");
+}
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
