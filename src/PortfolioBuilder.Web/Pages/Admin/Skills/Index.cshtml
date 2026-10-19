@@ -1,0 +1,60 @@
+@page
+@model PortfolioBuilder.Web.Pages.Admin.Skills.IndexModel
+@{
+    ViewData["Title"] = "Toolkit";
+}
+
+<section class="admin-page">
+  <div class="container">
+    <div class="section-label">Admin</div>
+    <h1 class="section-title">Technical Toolkit</h1>
+
+    <a href="/Admin/Skills/Create" class="btn btn-primary" style="margin-top: 1rem;">
+      <i class="fas fa-plus"></i> Add category
+    </a>
+
+    @if (!string.IsNullOrEmpty(Model.StatusMessage))
+    {
+      <div class="form-success">@Model.StatusMessage</div>
+    }
+
+    @if (Model.Items.Count == 0)
+    {
+      <p>No categories yet.</p>
+    }
+    else
+    {
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Name</th>
+              <th>Items</th>
+              <th>Icon</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (var category in Model.Items)
+            {
+              <tr>
+                <td>@category.DisplayOrder</td>
+                <td>@category.Name</td>
+                <td>@category.Items</td>
+                <td><i class="@category.IconClass"></i></td>
+                <td class="admin-actions">
+                  <a href="/Admin/Skills/Edit/@category.Id">Edit</a>
+                  <form method="post" asp-page-handler="Delete" asp-route-id="@category.Id"
+                        onsubmit="return confirm('Delete this category?');">
+                    <button type="submit" class="admin-delete">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div>
+</section>

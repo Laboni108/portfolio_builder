@@ -51,6 +51,8 @@ A personal portfolio website with a public project showcase and a protected admi
    sqlcmd -S localhost\SQLEXPRESS -E -No -i database\04_create_adminusers_table.sql
    sqlcmd -S localhost\SQLEXPRESS -E -No -i database\05_seed_projects.sql 
    sqlcmd -S localhost\SQLEXPRESS -E -No -i database\06_add_remember_token.sql
+   sqlcmd -S localhost\SQLEXPRESS -E -No -i database\07_create_skillcategories_table.sql
+   sqlcmd -S localhost\SQLEXPRESS -E -No -i database\08_seed_skillcategories.sql
 ```
 
    `05_seed_projects.sql` is optional. It inserts the author's sample projects.
