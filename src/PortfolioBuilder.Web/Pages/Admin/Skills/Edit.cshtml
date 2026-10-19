@@ -1,0 +1,45 @@
+@page "{id:int}"
+@model PortfolioBuilder.Web.Pages.Admin.Skills.EditModel
+@{
+    ViewData["Title"] = "Edit category";
+}
+
+<section class="admin-page">
+  <div class="container">
+    <div class="section-label">Admin</div>
+    <h1 class="section-title">Edit category</h1>
+
+    <form method="post" class="admin-form">
+      <div class="form-group">
+        <label class="form-label" asp-for="Input.Name">Name</label>
+        <input asp-for="Input.Name" class="form-control" />
+        <span asp-validation-for="Input.Name" class="field-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" asp-for="Input.IconClass">Icon class (Font Awesome)</label>
+        <input asp-for="Input.IconClass" class="form-control" />
+        <span asp-validation-for="Input.IconClass" class="field-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" asp-for="Input.Items">Items (separate with commas)</label>
+        <input asp-for="Input.Items" class="form-control" />
+        <span asp-validation-for="Input.Items" class="field-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" asp-for="Input.DisplayOrder">Display order (lower comes first)</label>
+        <input asp-for="Input.DisplayOrder" type="number" class="form-control" />
+        <span asp-validation-for="Input.DisplayOrder" class="field-error"></span>
+      </div>
+
+      <div class="admin-form-actions">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-floppy-disk"></i> Save changes
+        </button>
+        <a href="/Admin/Skills" class="btn btn-outline">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>
