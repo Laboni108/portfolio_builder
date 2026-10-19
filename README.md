@@ -65,6 +65,58 @@ A personal portfolio website with a public project showcase and a protected admi
 
 5. Open the URL printed in the terminal. On a fresh database, go to `/Setup` to create the first admin account, then sign in at `/Admin/Login`.
 
+## Run with Docker
+
+The app can run in a container, with SQL Server in a second container on the same network.
+
+1. Create a network and start SQL Server (choose your own strong `sa` password):
+
+```bash
+   docker network create portfolio-net
+   docker run -d --name portfolio-db --network portfolio-net \
+     -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<sa-password>" -e "MSSQL_PID=Express" \
+     -p 1433:1433 mcr.microsoft.com/mssql/server:2022-latest
+```
+
+2. Run the scripts in `database/` against it, in order (`01` to `06`, with `05` optional), for example:
+
+```bash
+   sqlcmd -S "tcp:localhost,1433" -U sa -P "<sa-password>" -No -i database/01_create_database.sql
+```
+
+3. Create a limited login for the app. It should not connect as `sa`:
+
+```sql
+   CREATE LOGIN portfolio_app WITH PASSWORD = '<app-password>', CHECK_POLICY = ON;
+   USE PortfolioDb;
+   CREATE USER portfolio_app FOR LOGIN portfolio_app;
+   ALTER ROLE db_datareader ADD MEMBER portfolio_app;
+   ALTER ROLE db_datawriter ADD MEMBER portfolio_app;
+```
+
+4. Build and run the app:
+
+```bash
+   docker build -t portfolio-builder .
+   docker run -d --name portfolio-web --network portfolio-net -p 8080:8080 \
+     -e "ConnectionStrings__PortfolioDb=Server=portfolio-db,1433;Database=PortfolioDb;User Id=portfolio_app;Password=<app-password>;TrustServerCertificate=True;" \
+     -e "DataProtection__KeysPath=/keys" \
+     -v portfolio-keys:/keys \
+     portfolio-builder
+```
+
+5. Open `http://localhost:8080`, go to `/Setup` to create the first admin, and sign in at `/Admin/Login`.
+
+**Configuration** is read from environment variables, which override `appsettings.json`:
+
+| Variable | Purpose |
+|---|---|
+| `ConnectionStrings__PortfolioDb` | Database connection string |
+| `DataProtection__KeysPath` | Folder for form-protection keys (mount a volume here so keys survive restarts) |
+| `ASPNETCORE_FORWARDEDHEADERS_ENABLED` | Set to `true` in the image, so the app trusts a reverse proxy's HTTPS header. Only expose the container through a trusted proxy. |
+
+Never commit real passwords or connection strings. 
+
 ## Project structure
 
 ```
