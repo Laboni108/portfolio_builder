@@ -22,6 +22,7 @@ builder.Services.AddScoped<ProjectRepository>();
 builder.Services.AddScoped<ContactMessageRepository>();
 builder.Services.AddScoped<AdminUserRepository>();
 builder.Services.AddScoped<AdminAuthService>();
+builder.Services.AddScoped<SkillCategoryRepository>();
 var keysPath = builder.Configuration["DataProtection:KeysPath"];
 if (!string.IsNullOrWhiteSpace(keysPath))
 {
