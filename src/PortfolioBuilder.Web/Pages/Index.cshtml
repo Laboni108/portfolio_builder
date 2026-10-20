@@ -125,46 +125,26 @@
       <h2 class="section-title">Technical Toolkit</h2>
     </div>
     <div class="skills-grid" style="margin-top: 2.5rem;">
-      <div class="skill-card reveal">
-        <div class="skill-card-header">
-          <div class="skill-icon"><i class="fas fa-code"></i></div>
-          <div class="skill-card-title">Languages</div>
+           @if (Model.Skills.Count == 0)
+      {
+        <p>No skills listed yet.</p>
+      }
+
+      @foreach (var category in Model.Skills)
+      {
+        <div class="skill-card reveal">
+          <div class="skill-card-header">
+            <div class="skill-icon"><i class="@category.IconClass"></i></div>
+            <div class="skill-card-title">@category.Name</div>
+          </div>
+          <div class="skill-tags">
+            @foreach (var item in category.Items.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+            {
+              <span class="skill-tag">@item</span>
+            }
+          </div>
         </div>
-        <div class="skill-tags">
-          <span class="skill-tag">C</span>
-          <span class="skill-tag">C++</span>
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">PHP</span>
-          <span class="skill-tag">SQL</span>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="skill-card-header">
-          <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
-          <div class="skill-card-title">Frameworks</div>
-        </div>
-        <div class="skill-tags">
-          <span class="skill-tag">Laravel</span>
-          <span class="skill-tag">ASP.NET</span>
-          <span class="skill-tag">Flutter</span>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="skill-card-header">
-          <div class="skill-icon"><i class="fab fa-docker"></i></div>
-          <div class="skill-card-title">Development Tools</div>
-        </div>
-        <div class="skill-tags">
-          <span class="skill-tag">Linux/Ubuntu</span>
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">GitHub</span>
-          <span class="skill-tag">REST APIs</span>
-          <span class="skill-tag">OMNeT++</span>
-          <span class="skill-tag">Android Studio</span>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </section>
@@ -222,27 +202,18 @@
 
     <div class="cp-grid" style="margin-top: 2.5rem;">
 
-      <div class="cp-card reveal">
-        <div class="cp-icon">⚡</div>
-        <div class="cp-title">100+ Problems Solved on Codeforces</div>
-      </div>
+           @if (Model.Highlights.Count == 0)
+      {
+        <p>No highlights yet.</p>
+      }
 
-      <div class="cp-card reveal">
-        <div class="cp-icon">💻</div>
-        <div class="cp-title">LeetCode (Easy &amp; Medium Problems)</div>
-      </div>
-
-      <div class="cp-card reveal">
-        <div class="cp-icon">🏆</div>
-        <div class="cp-title">23rd Place — Inter KUET Programming Contest (IKPC) 2022</div>
-      </div>
-
-      <div class="cp-card reveal">
-        <div class="cp-icon">🧠</div>
-        <div class="cp-title">Strong Foundation in Data Structures &amp; Algorithms</div>
-      </div>
-
-    </div>
+      @foreach (var highlight in Model.Highlights)
+      {
+        <div class="cp-card reveal">
+          <div class="cp-icon">@highlight.Icon</div>
+          <div class="cp-title">@highlight.Title</div>
+        </div>
+      }
   </div>
 </section>
 
