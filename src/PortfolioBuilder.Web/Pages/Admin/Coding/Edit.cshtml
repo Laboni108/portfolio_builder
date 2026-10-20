@@ -1,0 +1,39 @@
+@page "{id:int}"
+@model PortfolioBuilder.Web.Pages.Admin.Coding.EditModel
+@{
+    ViewData["Title"] = "Edit highlight";
+}
+
+<section class="admin-page">
+  <div class="container">
+    <div class="section-label">Admin</div>
+    <h1 class="section-title">Edit highlight</h1>
+
+    <form method="post" class="admin-form">
+      <div class="form-group">
+        <label class="form-label" asp-for="Input.Icon">Icon (an emoji)</label>
+        <input asp-for="Input.Icon" class="form-control" />
+        <span asp-validation-for="Input.Icon" class="field-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" asp-for="Input.Title">Title</label>
+        <input asp-for="Input.Title" class="form-control" />
+        <span asp-validation-for="Input.Title" class="field-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" asp-for="Input.DisplayOrder">Display order (lower comes first)</label>
+        <input asp-for="Input.DisplayOrder" type="number" class="form-control" />
+        <span asp-validation-for="Input.DisplayOrder" class="field-error"></span>
+      </div>
+
+      <div class="admin-form-actions">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-floppy-disk"></i> Save changes
+        </button>
+        <a href="/Admin/Coding" class="btn btn-outline">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>

@@ -9,21 +9,26 @@ public class IndexModel : PageModel
 {
     private readonly ProjectRepository _projects;
     private readonly SkillCategoryRepository _skills;
+    private readonly CodingHighlightRepository _highlights;
     private readonly ContactMessageRepository _messages;
 
     public IndexModel(
         ProjectRepository projects,
         SkillCategoryRepository skills,
+        CodingHighlightRepository highlights,
         ContactMessageRepository messages)
     {
         _projects = projects;
         _skills = skills;
+        _highlights = highlights;
         _messages = messages;
     }
 
     public List<Project> Projects { get; private set; } = new();
 
     public List<SkillCategory> Skills { get; private set; } = new();
+
+    public List<CodingHighlight> Highlights { get; private set; } = new();
 
     [BindProperty]
     public ContactInput Contact { get; set; } = new();
@@ -62,5 +67,6 @@ public class IndexModel : PageModel
     {
         Projects = (await _projects.GetAllAsync()).ToList();
         Skills = (await _skills.GetAllAsync()).ToList();
+        Highlights = (await _highlights.GetAllAsync()).ToList();
     }
 }

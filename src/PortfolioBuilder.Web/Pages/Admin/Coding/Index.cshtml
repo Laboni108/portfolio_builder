@@ -1,0 +1,58 @@
+@page
+@model PortfolioBuilder.Web.Pages.Admin.Coding.IndexModel
+@{
+    ViewData["Title"] = "Problem Solving";
+}
+
+<section class="admin-page">
+  <div class="container">
+    <div class="section-label">Admin</div>
+    <h1 class="section-title">Problem Solving</h1>
+
+    <a href="/Admin/Coding/Create" class="btn btn-primary" style="margin-top: 1rem;">
+      <i class="fas fa-plus"></i> Add highlight
+    </a>
+
+    @if (!string.IsNullOrEmpty(Model.StatusMessage))
+    {
+      <div class="form-success">@Model.StatusMessage</div>
+    }
+
+    @if (Model.Items.Count == 0)
+    {
+      <p>No highlights yet.</p>
+    }
+    else
+    {
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Icon</th>
+              <th>Title</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (var highlight in Model.Items)
+            {
+              <tr>
+                <td>@highlight.DisplayOrder</td>
+                <td>@highlight.Icon</td>
+                <td>@highlight.Title</td>
+                <td class="admin-actions">
+                  <a href="/Admin/Coding/Edit/@highlight.Id">Edit</a>
+                  <form method="post" asp-page-handler="Delete" asp-route-id="@highlight.Id"
+                        onsubmit="return confirm('Delete this highlight?');">
+                    <button type="submit" class="admin-delete">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div>
+</section>

@@ -202,27 +202,18 @@
 
     <div class="cp-grid" style="margin-top: 2.5rem;">
 
-      <div class="cp-card reveal">
-        <div class="cp-icon">⚡</div>
-        <div class="cp-title">100+ Problems Solved on Codeforces</div>
-      </div>
+           @if (Model.Highlights.Count == 0)
+      {
+        <p>No highlights yet.</p>
+      }
 
-      <div class="cp-card reveal">
-        <div class="cp-icon">💻</div>
-        <div class="cp-title">LeetCode (Easy &amp; Medium Problems)</div>
-      </div>
-
-      <div class="cp-card reveal">
-        <div class="cp-icon">🏆</div>
-        <div class="cp-title">23rd Place — Inter KUET Programming Contest (IKPC) 2022</div>
-      </div>
-
-      <div class="cp-card reveal">
-        <div class="cp-icon">🧠</div>
-        <div class="cp-title">Strong Foundation in Data Structures &amp; Algorithms</div>
-      </div>
-
-    </div>
+      @foreach (var highlight in Model.Highlights)
+      {
+        <div class="cp-card reveal">
+          <div class="cp-icon">@highlight.Icon</div>
+          <div class="cp-title">@highlight.Title</div>
+        </div>
+      }
   </div>
 </section>
 
