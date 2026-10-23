@@ -119,6 +119,38 @@ The app can run in a container, with SQL Server in a second container on the sam
 
 Never commit real passwords or connection strings. 
 
+## Publishing a static snapshot (GitHub Pages)
+
+The full app needs a server and SQL Server, so the public link is a **snapshot**: the home page exported as static files and hosted on GitHub Pages at `https://laboni108.github.io/portfolio_builder/`. The admin dashboard is not part of the snapshot, and the contact form in the snapshot posts to Formspree.
+
+**One-time setup**
+
+1. Clone the repo a second time, next to this one, and create an empty `gh-pages` branch:
+
+   ```powershell
+   cd ..
+   git clone https://github.com/Laboni108/portfolio_builder.git portfolio-pages
+   cd portfolio-pages
+   git checkout --orphan gh-pages
+   git rm -rf .
+   New-Item .nojekyll -ItemType File | Out-Null
+   git add .nojekyll
+   git commit -m "chore: start gh-pages"
+   git push origin gh-pages
+   ```
+
+2. On GitHub, go to Settings > Pages and deploy from the `gh-pages` branch, `/ (root)` folder.
+
+**Refreshing the live site** after changing content in the dashboard (stop the app first):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\publish-snapshot.ps1
+```
+
+The script starts the app, saves the home page, fixes its links for static hosting, copies the css, js, images and files folders, and pushes to `gh-pages`. It refuses to publish if the page links to a file that was not copied.
+
+If the `portfolio-pages` folder is lost, restore it with `git clone --branch gh-pages https://github.com/Laboni108/portfolio_builder.git portfolio-pages`.
+
 ## Project structure
 
 ```
